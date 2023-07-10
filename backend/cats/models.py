@@ -1,7 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
-
 User = get_user_model()
 
 
@@ -20,7 +19,9 @@ class Cat(models.Model):
         User, related_name='cats', 
         on_delete=models.CASCADE
         )
-    achievements = models.ManyToManyField(Achievement, through='AchievementCat')
+    achievements = models.ManyToManyField(
+        Achievement, through='AchievementCat'
+    )
     image = models.ImageField(
         upload_to='cats/images/', 
         null=True,  
